@@ -14,13 +14,16 @@ public class ArbolBin {
         return resultado;
     }
 
-
+    public int metodoTestGit(){
+        return 1;
+    }
 
     public boolean esVacio(){
         return raiz==null;
     }
 
     public Object padre(Object buscado){
+        //busca el elemento padre del elemento pasado por parametro
         Object resultado=null;
         if(this.raiz!=null){
             if(this.raiz.getElemento()!=buscado){
