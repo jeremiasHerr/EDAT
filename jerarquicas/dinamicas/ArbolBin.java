@@ -14,6 +14,20 @@ public class ArbolBin {
         return resultado;
     }
 
+    public int nivel(Object elemento){
+        int resultado=-1;
+        resultado = buscarNivelElemento(this.raiz, elemento);
+        return resultado;
+    }
+
+    private int buscarNivelElemento (NodoArbol nAux, Object buscado){
+        int resultado = -1;
+        if(nAux!=null){
+            
+        }
+        return resultado;
+    } 
+
     private int calcAltura(NodoArbol nAux){
         int altura=0,izq=0,der=0;
             if(nAux.getIzquierdo()!=null){
@@ -24,9 +38,7 @@ public class ArbolBin {
             }
             altura = Math.max(der,izq);
         return altura;
-
     }
-
 
     public boolean esVacio(){
         return raiz==null;
