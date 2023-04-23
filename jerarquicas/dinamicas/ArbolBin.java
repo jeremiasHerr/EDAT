@@ -9,12 +9,22 @@ public class ArbolBin {
     public int altura(){
         int resultado = -1;
         if(this.raiz!=null){
-
+            resultado = calcAltura(raiz);
         }
         return resultado;
     }
 
-
+    private int calcAltura(NodoArbol nAux){
+        int altura=0,izq=0,der=0;
+            if(nAux.getIzquierdo()!=null){
+                izq = calcAltura(nAux.getIzquierdo()) + 1;
+            }
+            if(nAux.getDerecho()!=null){
+                der = calcAltura(nAux.getDerecho()) + 1;
+            }
+            altura = Math.max(der,izq);
+        return altura;
+    }
 
     public boolean esVacio(){
         return raiz==null;

@@ -10,7 +10,7 @@ public class NodoArbol {
         this.izquierdo = izquierdo;
         this.derecho = derecho;
     }
-
+    
     public Object getElemento(){
         return this.elemento;
     }
