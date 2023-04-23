@@ -24,13 +24,16 @@ public class ArbolBin {
             }
             altura = Math.max(der,izq);
         return altura;
+
     }
+
 
     public boolean esVacio(){
         return raiz==null;
     }
 
     public Object padre(Object buscado){
+        //busca el elemento padre del elemento pasado por parametro
         Object resultado=null;
         if(this.raiz!=null){
             if(this.raiz.getElemento()!=buscado){
