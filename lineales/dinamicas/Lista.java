@@ -1,44 +1,47 @@
 package lineales.dinamicas;
+
 public class Lista {
     private Nodo cabecera;
-    private int laLongitud=0;
+    
+    public Lista() {
+        this.cabecera=null;
+    }   
+    public boolean insertar(Object nuevoElemento, int pos) {
+        boolean exito=true;
+        int largo=this.longitud();
 
-    public Lista(){
-        cabecera = null;
-    }
-
-    public boolean insertar(Object elemento, int posicion){
-        boolean exito=false;
-        if(1<=posicion && posicion<=laLongitud+1){
-            exito=true;
-            laLongitud++;
-            if(posicion==1){
-                this.cabecera = new Nodo(elemento, this.cabecera);
+        if (pos<1 || pos>largo+1) {
+            exito=false;
+        } else {
+            if (pos==1) {
+                this.cabecera=new Nodo(nuevoElemento, this.cabecera);
             } else {
-                Nodo aux = this.cabecera;
+                Nodo aux=this.cabecera;
                 int i=1;
-                while(i<posicion-1){
-                    aux = aux.getEnlace();
+                while (i<pos-1) {
+                    aux=aux.getEnlace();
                     i++;
                 }
-                Nodo nuevo = new Nodo(elemento, aux.getEnlace());
-                aux.setEnlace(nuevo);
+               Nodo nuevo=new Nodo(nuevoElemento, aux.getEnlace()); 
+               aux.setEnlace(nuevo);
             }
         }
         return exito;
     }
+    public boolean eliminar (int pos) {
+        boolean exito=true;
+        int largo=this.longitud();
 
-    public boolean eliminar(int posicion){
-        boolean exito=false;
-        if(!this.esVacia() && 1<=posicion && posicion<laLongitud){
-            exito = true;
-            if(posicion == 1){
-                this.cabecera = this.cabecera.getEnlace();
+        if (pos<1 || pos>largo+1 || this.cabecera==null) {
+            exito=false;
+        } else {
+            if (pos==1) {
+                this.cabecera=cabecera.getEnlace();
             } else {
-                Nodo aux = this.cabecera;
+                Nodo aux=this.cabecera;
                 int i=1;
-                while(i<posicion-1){
-                    aux = aux.getEnlace();
+                while (i<pos-1) {
+                    aux=aux.getEnlace();
                     i++;
                 }
                 aux.setEnlace(aux.getEnlace().getEnlace());
@@ -46,82 +49,87 @@ public class Lista {
         }
         return exito;
     }
+    public Object recuperar (int pos) {
+        Object elem;
+        int largo=this.longitud();
 
-    public Object recuperar(int posicion){
-        Object elemPos=null;
-        if(1<=posicion && posicion<=laLongitud){
-            Nodo aux = this.cabecera;
+        if (pos<1 || pos>largo) {
+            elem=null;
+        } else {
             int i=1;
-            while(i<posicion){
-                aux = aux.getEnlace();
+            Nodo aux=this.cabecera;
+            while (i<pos) {
+                aux=aux.getEnlace();
                 i++;
             }
-            elemPos = aux.getElem();
+            elem=aux.getElem();
         }
-        return elemPos;
+        return elem;
     }
+    public int localizar (Object elem) {
+        int pos=-1, i=1, largo=this.longitud();
+        Nodo aux=this.cabecera;
+        boolean resultado=false;
 
-    public void vaciar(){
-        this.cabecera = null;
-    }
-
-    public int localizar(Object elemBuscado){
-        int posResultado = -1;
-        Nodo aux = this.cabecera;
-        int i=1;
-        while(i<=laLongitud){
-            if(aux.getElem()==elemBuscado){
-                posResultado=i;
-                i = laLongitud + 1;
+        while (i<=largo && !resultado && aux != null) {
+            resultado=aux.getElem() == elem;
+            if (resultado) {
+                pos=i;
+            } else {
+                aux=aux.getEnlace();
+                i++;
             }
-            i++;
         }
-        return posResultado;
+        return pos;
     }
-
-    public String toString(){
-        String acumulador="";
-        if(!this.esVacia()){
-            Nodo aux = this.cabecera;
-            acumulador = aux.getElem().toString();
-            aux = aux.getEnlace();
-            for (int i = 2; i <= laLongitud; i++) {
-                if(aux.getElem()==null){
-                    acumulador = acumulador + ", " +"null";
-                } else {
-                    acumulador = acumulador + ", " +aux.getElem().toString();
+    public int longitud() {
+         int i = 0;
+            if (cabecera != null) {
+                i = 1;
+                Nodo enlace = this.cabecera.getEnlace();
+                while (enlace != null) {
+                    enlace = enlace.getEnlace();
+                    i++;
                 }
-                aux = aux.getEnlace();
             }
-            acumulador = "[" + acumulador + "]";
+            return i;
+    }
+    public void vaciar() {
+        this.cabecera=null;
+    }
+     public boolean esVacia() {
+            return this.cabecera == null;
         }
-        return acumulador;
-    }
+     public Lista clone() {
+         Lista clon=new Lista();
+         int i, largo=this.longitud();
 
-    public int longitud(){
-        return laLongitud;
-    }
-
-    public Lista clone(){
-        Lista listaClon = new Lista();
-        if(!this.esVacia()){
-            listaClon.laLongitud = this.laLongitud;
-            Nodo aux = this.cabecera;
-            listaClon.cabecera = new Nodo(aux.getElem(), listaClon.cabecera);
-            aux = aux.getEnlace();
-            Nodo aux2 = listaClon.cabecera;
-            for (int j = 1; j < laLongitud; j++) {
+         if (this.cabecera !=null) {
+             Nodo aux=this.cabecera.getEnlace();
+             clon.cabecera=new Nodo(this.cabecera.getElem(), null);
+             Nodo aux2=clon.cabecera;
+            for (i=1; i<largo; i++) {
                 aux2.setEnlace(new Nodo(aux.getElem(), null));
+                aux=aux.getEnlace();
+                aux2=aux2.getEnlace();
+            }         
+         }
+         return clon;
+     }
+     public String toString() {
+           String resultado = "";
+        Nodo aux = this.cabecera;
+        if (esVacia()) {
+            resultado = "La lista esta vacia";
+        } else {
+            while (aux != null) {
+                resultado = resultado + aux.getElem().toString();
                 aux = aux.getEnlace();
-                aux2 = aux2.getEnlace();
+                if (aux != null) {
+                    resultado = resultado + ",";
+                }
             }
-            
         }
-        return listaClon;
-    }
-
-    public boolean esVacia(){
-        return cabecera == null;
-    }
-
+        return resultado;
+     }
 }

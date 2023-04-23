@@ -18,15 +18,14 @@ public class testArbolBin{
         arbolOriginal.insertar(16, 13, false);
         arbolOriginal.insertar(17, 16, true);
         */
-        arbolOriginal.insertar('A', null, true);
-        arbolOriginal.insertar('B', 'A', true);
-        arbolOriginal.insertar('D', 'B', true);
-        arbolOriginal.insertar('C', 'A', false);
-        arbolOriginal.insertar('E', 'C', true);
-        arbolOriginal.insertar('F', 'C', false);
-        arbolOriginal.insertar('G', 'E', true);
-        arbolOriginal.insertar('H', 'E', false);
-       
+        arbolOriginal.insertar('A', null, 'I');
+        arbolOriginal.insertar('B', 'A', 'I');
+        arbolOriginal.insertar('C', 'A', 'D');
+        arbolOriginal.insertar('D', 'B', 'I');
+        arbolOriginal.insertar('E', 'C', 'I');
+        arbolOriginal.insertar('F', 'C', 'D');
+        arbolOriginal.insertar('G', 'E', 'I');
+        arbolOriginal.insertar('H', 'E', 'D');
         //System.out.println(arbolOriginal.padre(8));
         System.out.println("Arbol en Preorden: "+arbolOriginal.listarPreorden().toString());
         System.out.println("Arbol en Inorden: "+arbolOriginal.listarInorden().toString());
