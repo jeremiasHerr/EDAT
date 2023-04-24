@@ -1,11 +1,33 @@
 package jerarquicas.dinamicas;
 import lineales.dinamicas.Lista;
+import lineales.dinamicas.Cola;
 public class ArbolBin {
 
     private NodoArbol raiz;
 
     public ArbolBin() {
         this.raiz = null;
+    }
+
+    public Lista listarNiveles(){
+        Lista listaPorNiveles = new Lista();
+        if(this.raiz!=null){
+            Cola colaAux = new Cola();
+            colaAux.poner(this.raiz);
+            while(!colaAux.esVacia()){
+                NodoArbol nodoActual;
+                nodoActual = (NodoArbol) colaAux.obtenerFrente();
+                listaPorNiveles.insertar(nodoActual.getElem(), listaPorNiveles.longitud()+1);
+                colaAux.sacar();
+                if(nodoActual.getIzquierdo()!=null){
+                    colaAux.poner(nodoActual.getIzquierdo());
+                }
+                if(nodoActual.getDerecho()!=null){
+                    colaAux.poner(nodoActual.getDerecho());
+                }
+            }
+        }
+        return listaPorNiveles;
     }
 
     public boolean insertar(Object elemNuevo, Object elemPadre, char lugar) {
@@ -111,6 +133,10 @@ public class ArbolBin {
             altura = Math.max(izq, der);
         }
         return altura;
+    }
+
+    public void vaciar(){
+        this.raiz = null;
     }
 
     public int nivel(Object elemento) {

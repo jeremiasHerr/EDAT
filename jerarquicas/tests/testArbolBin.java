@@ -30,6 +30,7 @@ public class testArbolBin{
         System.out.println("Arbol en Preorden: "+arbolOriginal.listarPreorden().toString());
         System.out.println("Arbol en Inorden: "+arbolOriginal.listarInorden().toString());
         System.out.println("Arbol en Posorden: "+arbolOriginal.listarPosorden().toString());
+        System.out.println("Arbol por niveles: "+arbolOriginal.listarNiveles().toString());
         System.out.println("Nivel del elemento buscado: "+arbolOriginal.nivel(99));
         System.out.println("Altura del arbol: " + arbolOriginal.altura());
     }

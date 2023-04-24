@@ -17,7 +17,7 @@ public class Cola {
         Nodo nuevoNodo;
         if (this.esVacia()) {
             nuevoNodo = new Nodo(elemento, null);
-            frente = new Nodo(null, nuevoNodo);
+            frente = nuevoNodo;
             fin = nuevoNodo;
         } else {
             nuevoNodo = new Nodo(elemento, null);
@@ -27,14 +27,12 @@ public class Cola {
         return true;
     }
 
-    public Object obtenerFrente(){
-        Object elemento;
-        if(esVacia()){
-            elemento = null;
-        } else {
-            elemento = this.frente.getEnlace().getElem();
+    public Object obtenerFrente() {
+        Object retorna = null;
+        if (!esVacia()) {
+            retorna = this.frente.getElem();
         }
-        return elemento;
+        return retorna;
     }
 
     private void clonarRecursivo(Cola colaClon, Nodo aux1){
