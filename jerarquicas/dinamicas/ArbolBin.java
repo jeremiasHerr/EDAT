@@ -9,13 +9,9 @@ public class ArbolBin {
     public int altura(){
         int resultado = -1;
         if(this.raiz!=null){
-
+            boolean pepe=true;
         }
         return resultado;
-    }
-
-    public int metodoTestGit(){
-        return 1;
     }
 
     public boolean esVacio(){
