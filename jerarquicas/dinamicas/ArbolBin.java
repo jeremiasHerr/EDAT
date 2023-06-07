@@ -1,6 +1,7 @@
 package jerarquicas.dinamicas;
 import lineales.dinamicas.Lista;
 import lineales.dinamicas.Cola;
+
 public class ArbolBin {
 
     private NodoArbol raiz;
@@ -8,6 +9,14 @@ public class ArbolBin {
     public ArbolBin() {
         this.raiz = null;
     }
+
+    public ArbolBin clone(){
+        ArbolBin arbolClon = new ArbolBin();
+
+        return arbolClon;
+    }
+
+    
 
     public Lista listarNiveles(){
         Lista listaPorNiveles = new Lista();
