@@ -4,7 +4,7 @@ public class TestCola {
         Cola colaOriginal = new Cola();
         cargarCola(colaOriginal);
         System.out.println(colaOriginal.toString());
-        //System.out.println(colaOriginal.clone().toString());
+        System.out.println(colaOriginal.clone().toString());
     }
 
     public static void cargarCola(Cola unaCola){
