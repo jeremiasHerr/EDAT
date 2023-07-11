@@ -502,6 +502,8 @@ public class ArbolGen {
         return resultado;
     }
 
+    
+
     public int orden() {
         int contador = 0;
         if (this.raiz != null) {
