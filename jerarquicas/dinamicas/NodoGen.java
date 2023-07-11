@@ -1,4 +1,5 @@
 package jerarquicas.dinamicas;
+
 public class NodoGen {
     private Object elem;
     private NodoGen hijoIzq;
@@ -31,5 +32,5 @@ public class NodoGen {
 
    public void setHermanoDer(NodoGen hermanoDer) {
        this.hermanoDer = hermanoDer;
-   }  
+   }
 }

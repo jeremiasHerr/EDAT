@@ -48,6 +48,7 @@ public class Cola {
             }
         }
     }
+    
     public Cola clone(){
         Cola colaNueva = new Cola();
         Nodo aux = this.frente;
