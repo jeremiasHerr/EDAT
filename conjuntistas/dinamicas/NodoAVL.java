@@ -1,8 +1,8 @@
-package jerarquicas.dinamicas;
+package conjuntistas.dinamicas;
 
 public class NodoAVL {
     private Comparable elem;
-    private int altura;
+    private int altura = 0;
     private NodoAVL izquierdo;
     private NodoAVL derecho;
 
@@ -10,23 +10,30 @@ public class NodoAVL {
         this.elem = elemento;
         this.izquierdo = hijoIzq;
         this.derecho = hijoDer;
+        recalcularAltura();
     }
 
     public int getAltura() {
-        recalcularAltura();
         return this.altura;
     }
 
     public void recalcularAltura(){
-        if(izquierdo!=null && derecho!=null){
-            this.altura = izquierdo.getAltura() - derecho.getAltura();
-        } else if(izquierdo!=null && derecho==null){
-            this.altura = izquierdo.getAltura() - (-1);
-        } else if(izquierdo==null && derecho!=null){
-            this.altura = -1 - derecho.getAltura();
+        int alturaIzq,alturaDer;
+        if(izquierdo==null){
+            alturaIzq=-1;
         } else {
-            this.altura = 0;
+            alturaIzq = izquierdo.getAltura();
         }
+        if(derecho==null){
+            alturaDer = -1;
+        } else {
+            alturaDer = derecho.getAltura();
+        }
+        
+            altura = Math.max(alturaIzq, alturaDer)+1;
+        
+        
+
     }
 
     public Comparable getElem(){
@@ -50,7 +57,7 @@ public class NodoAVL {
     }
 
     public void setDerecho(NodoAVL hijoDer){
-
+        this.derecho = hijoDer;
     }
 
 }

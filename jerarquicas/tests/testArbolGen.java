@@ -17,8 +17,11 @@ public class testArbolGen {
         pino.insertar(12, 10);
         pino.insertar(20, 8);
         //System.out.println(pino.obtenerNodosNivelPar());
+        //System.out.println(pino.toString());
+        //pino.eliminarNodosDeValor(20);
         System.out.println(pino.toString());
-        pino.eliminarNodosDeValor(20);
+        //System.out.println(pino.obtenerCantidadNodosNivel(4));
+        pino.insertarEnPosicion(30,2,2);
         System.out.println(pino.toString());
     }
 }
