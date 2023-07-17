@@ -1,4 +1,4 @@
-package conjuntistas.dinamicas.tests;
+package conjuntistas.tests;
 
 import conjuntistas.dinamicas.ArbolAVL;
 import jerarquicas.dinamicas.*;
@@ -17,6 +17,9 @@ public class testArbolAVL {
         pino.insertar(3);
         pino.insertar(10);
         pino.insertar(17);
+        pino.eliminar(12);
+  
+        
 
         System.out.println(pino.toString());
 
