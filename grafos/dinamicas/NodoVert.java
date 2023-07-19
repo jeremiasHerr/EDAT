@@ -1,6 +1,7 @@
-package conjuntistas.dinamicas;
+package grafos.dinamicas;
 
 public class NodoVert {
+    //atributos
     private Object elem;
     private NodoVert sigVertice;
     private NodoAdy primerAdy;
