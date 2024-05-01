@@ -127,7 +127,7 @@ public class Lista {
         }
         return clon;
     }
-
+    @Override
     public String toString() {
         String resultado = "";
         Nodo aux = this.cabecera;

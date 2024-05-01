@@ -8,7 +8,7 @@ public class PruebaLista {
         //System.out.println("Original: " + listaOriginal.toString());
         //System.out.println("Clon:     " + listaOriginal.clone().toString());
         Lista listaAux = concatenar(listaOriginal, listaDos);
-       System.out.println("Lista concatenada: " + listaAux.toString());
+        System.out.println("Lista concatenada: " + listaAux.toString());
     }
 
     public static void cargarLista(Lista laLista){

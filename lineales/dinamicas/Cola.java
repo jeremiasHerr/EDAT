@@ -18,7 +18,7 @@ public class Cola {
         if (this.esVacia()) {
             nuevoNodo = new Nodo(elemento, null);
             frente = nuevoNodo;
-            fin = nuevoNodo;
+            fin = nuevoNodo;  
         } else {
             nuevoNodo = new Nodo(elemento, null);
             fin.setEnlace(nuevoNodo);
@@ -34,7 +34,7 @@ public class Cola {
         }
         return retorna;
     }
-
+/* 
     private void clonarRecursivo(Cola colaClon, Nodo aux1){
         if(aux1!=null){
             if(colaClon.esVacia()){
@@ -48,16 +48,35 @@ public class Cola {
             }
         }
     }
-    
+   */ 
+
+   /* 
     public Cola clone(){
         Cola colaNueva = new Cola();
         Nodo aux = this.frente;
         clonarRecursivo(colaNueva, aux);
         return colaNueva;
     }
+    */
 
-/* 
-    public Cola clone(){
+    public Cola clone() {
+        Cola colaClon = new Cola();
+        if (!this.esVacia()) {
+            colaClon.frente = new Nodo (this.frente.getElem(),null);
+            cloneAux(colaClon.frente,this.frente.getEnlace());
+            colaClon.fin = new Nodo(fin.getElem(),null);
+        }
+        return colaClon;
+    }
+    private void cloneAux(Nodo nodoTemp,Nodo nodoEnlace) {  
+        if (nodoEnlace != null) {
+            nodoTemp.setEnlace(new Nodo(nodoEnlace.getElem(),null));
+            cloneAux(nodoTemp.getEnlace(), nodoEnlace.getEnlace());
+        }
+
+    }
+
+    public Cola clone2(){
         Cola colaNueva = new Cola();
         Nodo aux1,aux2;
         colaNueva.frente = new Nodo(null,this.frente.getEnlace());
@@ -72,12 +91,12 @@ public class Cola {
         }
         return colaNueva;
     }
-*/
+
 
     @Override
     public String toString(){
         String resultado="";
-        Nodo aux = frente.getEnlace();
+        Nodo aux = frente;
         if (esVacia()) {
             resultado = "Cola vacia";
         } else {
